@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.lklpay.www"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'wslm'
+            keyPassword 'wslm2017'
+            storeFile file('E:/android_studio/keystore/wslm.jks')
+            storePassword 'wslm2017'
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    lintOptions {
+//        checkReleaseBuilds false
+//        abortOnError false
+        /**
+         * checkReleaseBuilds就是在打包Release版本的时候进行检测，这里就直接关掉了，也可以打开，这样报错还会显示出来。
+         * 关键的就是abortOnError一定要设为fals e，这样即使有报错也不会停止打包了。
+         */
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    //RecyclerView
+    compile project(':library:RecyclerViewLibrary')
+    //弹出框
+    compile project(':library:FlycoDialog_Lib')
+    // butterknife 代替findViewById
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //xutils3
+    compile 'org.xutils:xutils:3.5.0'
+    //权限申请
+    compile 'me.weyye.hipermission:library:1.0.4'
+    //gson
+    compile 'com.google.code.gson:gson:2.8.0'
+    //二维码zxing
+    compile 'com.google.zxing:core:3.2.0'
+    //选择类库
+    compile 'com.github.addappcn:android-pickers:1.0.1'
+    //优惠券背景样式
+    compile 'com.github.dongjunkun:CouponView:1.0.4'
+    //浏览器库
+//    compile 'com.just.agentweb:agentweb:1.2.6'
+}

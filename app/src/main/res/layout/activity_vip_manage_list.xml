@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lklpay.www.VipManageListActivity">
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/toolbar" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_6_dip"
+                android:layout_above="@+id/ll" />
+
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/dimen_30_dip"
+                android:layout_marginTop="@dimen/dimen_1_dip"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_check_all"
+                    style="@style/all_btn_style"
+                    android:layout_width="@dimen/dimen_238_dip"
+                    android:text="@string/check_all"
+                    android:layout_marginRight="@dimen/dimen_15_dip"/>
+
+                <Button
+                    android:id="@+id/btn_send_stamps"
+                    style="@style/all_btn_style"
+                    android:layout_width="@dimen/dimen_238_dip"
+                    android:background="@drawable/shape_btn_sky_blue"
+                    android:text="@string/send_stamps"
+                    android:layout_marginLeft="@dimen/dimen_15_dip"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

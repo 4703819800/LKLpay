@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#81A7C3</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="color_63">#333333</color>
+    <color name="color_6a">#aaaaaa</color>
+    <color name="color_6b">#bbbbbb</color>
+    <color name="color_6c">#cccccc</color>
+    <color name="color_6d">#dddddd</color>
+    <color name="color_6e">#eeeeee</color>
+    <color name="color_66">#666666</color>
+    <color name="color_68">#888888</color>
+    <color name="color_gray">#6b6b6b</color>
+    <color name="color_green_91">#9ED191</color>
+    <color name="color_green_43">#496043</color>
+    <color name="color_yellow_00">#F6F400</color>
+    <color name="color_yellow_10">#DB9F10</color>
+    <color name="color_blue">#7D7DFF</color>
+    <color name="color_blue_b5">#3F51B5</color>
+    <color name="color_green">#219a3a</color>
+    <color name="color_orange">#d53f2c</color>
+    <color name="color_yellow">#eece29</color>
+    <color name="color_pinkl">#FF4081</color>
+
+    <color name="color_sk">#ee3a5a</color>
+    <color name="color_sk_selector">#c91c41</color>
+    <color name="color_vip_manage">#bea681</color>
+    <color name="color_vip_manage_selector">#a58a67</color>
+    <color name="color_order_manage">#e6b83f</color>
+    <color name="color_order_manage_selector">#bf8b16</color>
+    <color name="color_coupons_manage">#385d80</color>
+    <color name="color_coupons_manage_selector">#1a3e5b</color>
+    <color name="color_vip_shop">#2db1bf</color>
+    <color name="color_vip_shop_selector">#158d93</color>
+    <color name="color_login">#89bb2f</color>
+    <color name="color_login_selector">#71991a</color>
+    <color name="color_btn">#e6b83f</color>
+    <color name="color_sky_blue">#81a7c3</color>
+
+
+</resources>

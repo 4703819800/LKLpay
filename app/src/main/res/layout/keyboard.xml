@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/table"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/one"
+                    style="@style/numeric_keyboard"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/two"
+                    style="@style/numeric_keyboard"
+                    android:text="2" />
+
+                <Button
+                    android:id="@+id/three"
+                    style="@style/numeric_keyboard"
+                    android:text="3" />
+                <Button
+                    android:id="@+id/delete"
+                    style="@style/numeric_keyboard"
+                    android:textColor="@color/color_blue"
+                    android:text="退格" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/four"
+                    style="@style/numeric_keyboard"
+                    android:text="4" />
+
+                <Button
+                    android:id="@+id/five"
+                    style="@style/numeric_keyboard"
+                    android:text="5" />
+
+                <Button
+                    android:id="@+id/six"
+                    style="@style/numeric_keyboard"
+                    android:text="6" />
+                <Button
+                    android:id="@+id/minus"
+                    style="@style/numeric_keyboard"
+                    android:textColor="@color/color_blue"
+                    android:text="-" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/seven"
+                    style="@style/numeric_keyboard"
+                    android:text="7" />
+
+                <Button
+                    android:id="@+id/eight"
+                    style="@style/numeric_keyboard"
+                    android:text="8" />
+
+                <Button
+                    android:id="@+id/nine"
+                    style="@style/numeric_keyboard"
+                    android:text="9" />
+                <Button
+                    android:id="@+id/plus"
+                    style="@style/numeric_keyboard"
+                    android:textColor="@color/color_blue"
+                    android:text="+" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/zero"
+                    style="@style/numeric_keyboard"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/dot"
+                    style="@style/numeric_keyboard"
+                    android:text="." />
+
+                <Button
+                    android:id="@+id/empty"
+                    style="@style/numeric_keyboard"
+                    android:textColor="@color/color_blue"
+                    android:text="C" />
+                <Button
+                    android:id="@+id/equal"
+                    style="@style/numeric_keyboard"
+                    android:textColor="@color/color_blue"
+                    android:text="确定" />
+            </TableRow>
+        </TableLayout>
+
+
+</TableLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lklpay.www.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar" />
+
+            <RelativeLayout
+                android:id="@+id/rl_btn_sk"
+                style="@style/main_button_rl"
+                android:layout_width="match_parent"
+                android:background="@drawable/btn_main_sk_selector">
+
+                <ImageView
+                    android:id="@+id/iv_sk_1"
+                    style="@style/main_button_image"
+                    android:background="@drawable/icon_shoukuan" />
+
+                <TextView
+                    style="@style/main_button_text"
+                    android:layout_toEndOf="@+id/iv_sk_1"
+                    android:layout_toRightOf="@+id/iv_sk_1"
+                    android:text="@string/shoukuan" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rl_btn_vip_shop"
+                    style="@style/main_button_rl"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_main_vip_shop_selector">
+
+                    <ImageView
+                        android:id="@+id/iv_vip_shop"
+                        style="@style/main_button_image"
+                        android:background="@drawable/icon_vip_shop" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_vip_shop"
+                        android:layout_toRightOf="@+id/iv_vip_shop"
+                        android:text="@string/vip_shop" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_order_manage"
+                    style="@style/main_button_rl"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_main_order_manage_selector">
+
+                    <ImageView
+                        android:id="@+id/iv_order_manage"
+                        style="@style/main_button_image"
+                        android:background="@drawable/icon_order_manage" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_order_manage"
+                        android:layout_toRightOf="@+id/iv_order_manage"
+                        android:text="@string/order_manage" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/btn_coupons_manage"
+                    style="@style/main_button_rl"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_main_coupons_manage_selector">
+
+                    <ImageView
+
+                        android:id="@+id/iv_coupons_manage"
+                        style="@style/main_button_image"
+                        android:background="@drawable/icon_coupons_manage" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_coupons_manage"
+                        android:layout_toRightOf="@+id/iv_coupons_manage"
+                        android:text="@string/coupons_manage" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_vip_manage"
+                    style="@style/main_button_rl"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_main_vip_manage_selector">
+
+                    <ImageView
+                        android:id="@+id/iv_vip_manage"
+                        style="@style/main_button_image"
+                        android:background="@drawable/icon_vip_manage" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_vip_manage"
+                        android:layout_toRightOf="@+id/iv_vip_manage"
+                        android:text="@string/vip_manage" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/login"
+                style="@style/main_button_rl"
+                android:layout_width="match_parent"
+                android:background="@drawable/btn_main_login_selector">
+
+                <ImageView
+                    android:id="@+id/iv_log_1"
+                    style="@style/main_button_image"
+                    android:background="@drawable/icon_login" />
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    style="@style/main_button_text"
+                    android:layout_toEndOf="@+id/iv_log_1"
+                    android:layout_toRightOf="@+id/iv_log_1"
+                    android:text="@string/action_logout" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

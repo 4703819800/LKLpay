@@ -1,0 +1,1 @@
+include ':app',':library:RecyclerViewLibrary',':library:FlycoDialog_Lib'

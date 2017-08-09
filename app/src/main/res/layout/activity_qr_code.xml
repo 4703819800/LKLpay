@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include android:id="@+id/include1" layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_26_dip"
+        android:text="@string/vip_shop_code_state"
+        android:textColor="@color/black"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_above="@+id/textView2"
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/shuaxin"
+        android:text="@string/rebuild_code"
+        android:gravity="center"
+        android:textColor="@color/color_blue"
+        android:layout_marginBottom="@dimen/dimen_20_dip" />
+
+</RelativeLayout>

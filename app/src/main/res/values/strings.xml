@@ -1,0 +1,79 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="gen">http://lkl.lcuin.com/lacarra/phone/</string>
+    <string name="qr_code">http://www.egjegj.com/wxlacarra/phone/getQrcode?code=</string>
+
+
+    <string name="app_name">微联商盟</string>
+    <string name="vip_shop">会员到店</string>
+    <string name="zdyc_tcyy">再点一次退出应用</string>
+    <string name="submit">提交</string>
+    <string name="submit_order">提交订单</string>
+    <string name="message_unusual">服务器异常，请稍后重试</string>
+
+    <string name="shoukuan">收  款</string>
+    <string name="vip">会员</string>
+    <string name="sm_youhui">扫码享优惠</string>
+    <string name="loading">玩命加载中....</string>
+    <string name="load_empty">抱歉,没有数据了..</string>
+    <string name="load_error">加载失败,点击重试</string>
+    <string name="shuaka">刷卡</string>
+    <string name="weixin">微信</string>
+    <string name="zhifubao">支付宝</string>
+    <string name="pay_money_no">请输入收款金额</string>
+    <string name="money_reality">实付金额:</string>
+    <string name="money_coupons">优惠金额:</string>
+    <string name="pay_money_out">确定退出收款？</string>
+    <string name="vip_shop_ok">会员已经登录</string>
+
+    <string name="load_no_more">没有更多了</string>
+    <string name="refres_more">下拉刷新</string>
+
+    <string name="hipermission_close">用户关闭权限申请</string>
+    <string name="hipermission_open">权限已开启</string>
+    <!-- Strings related to login -->
+    <string name="prompt_tel">账号</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_logout">注销</string>
+    <string name="prompt_tel_no">账号不能为空</string>
+    <string name="prompt_password_no">密码不能为空</string>
+    <string name="name_password_no">用户名或密码错误</string>
+
+    <string name="vip_shop_code_state">顾客使用微信扫描二维码\n即可注册或者到店，用券享受优惠</string>
+    <string name="rebuild_code">重新生成二维码</string>
+    <string name="rebuild_code_no">生成二维码失败，请重新生成</string>
+    <string name="rebuild_code_success">二维码已更新</string>
+
+    <string name="vip_manage">会员管理</string>
+    <string name="order_manage">订单管理</string>
+    <string name="coupons_manage">优惠管理</string>
+    <string name="coupons_new">新建优惠券</string>
+    <string name="coupons_delete">删除优惠券</string>
+    <string name="check_all">全选</string>
+    <string name="un_check_all">取消全选</string>
+    <string name="finish">完成</string>
+    <string name="send_stamps">送券</string>
+    <string name="vip_select">请选择会员</string>
+    <string name="send_stamps_success">确定将此优惠券送出？</string>
+    <string name="send_stamps_employ">确定使用此优惠券？</string>
+    <string name="coupons_name_hint">优惠券名称不超过10个字</string>
+    <string name="coupons_name">*优惠券名称</string>
+    <string name="coupons_name_no">优惠券名称不能为空</string>
+    <string name="coupons_type">*优惠券类型</string>
+    <string name="coupons_money">*面值</string>
+    <string name="coupons_money_no">面值不能为空</string>
+    <string name="coupons_money_hint">请输入优惠金额</string>
+    <string name="coupons_tiaojian">*使用条件</string>
+    <string name="coupons_wu">无门槛</string>
+    <string name="coupons_you">消费满</string>
+    <string name="coupons_you_no">优惠金额不能为空</string>
+    <string name="coupons_you_money_hint">请输入金额</string>
+    <string name="coupons_time">*有效时间</string>
+    <string name="coupons_time_no">请选择有效时间</string>
+    <string name="coupons_time_min">通用时段</string>
+    <string name="time_type">yyyy-mm-dd</string>
+    <string name="time_min_type">dd:mm</string>
+
+
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lklpay.www.CouponsManageActivity">
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/toolbar" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/include1">
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/btn_new_coupons"
+                    style="@style/coupons_btn_new_del_rl"
+                    android:background="@drawable/btn_main_coupons_manage_selector">
+
+                    <ImageView
+                        android:id="@+id/iv_coupons_new"
+                        style="@style/coupons_btn_new_del_image"
+                        android:background="@drawable/coupons_new" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_coupons_new"
+                        android:layout_toRightOf="@+id/iv_coupons_new"
+                        android:text="@string/coupons_new" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_delete_coupons"
+                    style="@style/coupons_btn_new_del_rl"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/btn_main_vip_shop_selector">
+
+                    <ImageView
+                        android:id="@+id/iv_coupons_delete"
+                        style="@style/coupons_btn_new_del_image"
+                        android:background="@drawable/coupons_del" />
+
+                    <TextView
+                        style="@style/main_button_text"
+                        android:layout_toEndOf="@+id/iv_coupons_delete"
+                        android:layout_toRightOf="@+id/iv_coupons_delete"
+                        android:text="@string/coupons_delete" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll2"
+                android:layout_below="@+id/ll"
+                android:layout_marginTop="@dimen/dimen_6_dip" />
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/dimen_1_dip"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_30_dip"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_check_all"
+                    style="@style/all_btn_style"
+                    android:layout_width="@dimen/dimen_238_dip"
+                    android:layout_marginRight="@dimen/dimen_15_dip"
+                    android:text="@string/check_all" />
+
+                <Button
+                    android:id="@+id/btn_finish"
+                    style="@style/all_btn_style"
+                    android:layout_width="@dimen/dimen_238_dip"
+                    android:layout_marginLeft="@dimen/dimen_15_dip"
+                    android:background="@drawable/shape_btn_sky_blue"
+                    android:text="@string/finish" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
