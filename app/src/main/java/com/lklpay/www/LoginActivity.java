@@ -95,11 +95,6 @@ public class LoginActivity extends BaseActivityBar {
 
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return super.onKeyDown(keyCode, event);
-    }
-
     @OnClick({R.id.sign_in_button})
     public void onViewClicked(View view) {
         switch (view.getId()) {

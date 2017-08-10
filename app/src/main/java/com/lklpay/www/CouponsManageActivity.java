@@ -214,7 +214,6 @@ public class CouponsManageActivity extends BaseActivityBar implements BaseQuickA
                 Map<String, String> mapDel = new HashMap<String, String>();
                 mapDel.put("id", shopIdString);
                 mapDel.put("shopId", shopId);
-                LogUtils.e(shopIdString);
                 Xutils.getInstance().post(MethodUtil.getContext().getResources().getString(R.string.gen) + "deleteTicket", mapDel, new Xutils.XCallBack() {
                     @Override
                     public void onSuccess(String result) {

@@ -113,7 +113,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        closeCurrent();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            closeCurrent();
+        }
         return true;
     }
 
