@@ -14,6 +14,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lklpay.www.adapter.OrderManageAdapter;
 import com.lklpay.www.adapter.PullToRefreshAdapter;
 import com.lklpay.www.base.BaseActivityBar;
+import com.lklpay.www.bean.couponsBean;
 import com.lklpay.www.bean.orderBean;
 import com.lklpay.www.tools.LogUtils;
 import com.lklpay.www.tools.MethodUtil;
@@ -32,6 +33,8 @@ public class OrderManageListActivity extends BaseActivityBar implements BaseQuic
     SwipeRefreshLayout swipeLayout;
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
+
+    private String url = "getOrdersByShopId";
 
     private orderBean orderBean;
     private OrderManageAdapter orderManageAdapter;
@@ -56,7 +59,7 @@ public class OrderManageListActivity extends BaseActivityBar implements BaseQuic
 
         map = new HashMap<String, String>();
         map.put("shopId", shopId);
-        Xutils.getInstance().post(MethodUtil.getContext().getResources().getString(R.string.gen) + "getOrdersByShopId", map, new Xutils.XCallBack() {
+        Xutils.getInstance().post(MethodUtil.getContext().getResources().getString(R.string.gen) + url, map, new Xutils.XCallBack() {
             @Override
             public void onSuccess(String result) {
                 LogUtils.e(result);
@@ -87,6 +90,20 @@ public class OrderManageListActivity extends BaseActivityBar implements BaseQuic
     @Override
     public void onRefresh() {
         orderManageAdapter.setEnableLoadMore(false);
+        Xutils.getInstance().post(MethodUtil.getContext().getResources().getString(R.string.gen) + url, map, new Xutils.XCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtils.e(result);
+                orderBean = gson.fromJson(result, orderBean.class);
+                orderManageAdapter.setNewData(orderBean.getOrderList());
+                swipeLayout.setRefreshing(false);
+                orderManageAdapter.setEnableLoadMore(true);
+
+            }
+
+        });
+
+
         swipeLayout.setRefreshing(false);
         orderManageAdapter.setEnableLoadMore(true);
     }

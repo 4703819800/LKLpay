@@ -38,6 +38,45 @@ android {
          */
     }
 
+    /**
+     * 多渠道打包
+     */
+//    productFlavors {
+//        yyb {}
+//        xiaomi {}
+//        qh360 {}
+//        baidu {}
+//        wandoujia {}
+//    }
+//
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
+/**
+ * 多渠道打包，获取渠道信息
+ */
+//    public static String getChannelCode(Context context) {
+//        String code = getMetaData(context, "CHANNEL");
+//        if (code != null) {
+//            return code;
+//        }
+//        return "C_000";
+//    }
+//
+//    private static String getMetaData(Context context, String key) {
+//        try {
+//            ApplicationInfo  ai = context.getPackageManager().getApplicationInfo(
+//                    context.getPackageName(), PackageManager.GET_META_DATA);
+//            Object value = ai.metaData.get(key);
+//            if (value != null) {
+//                return value.toString();
+//            }
+//        } catch (Exception e) {
+//            //
+//        }
+//        return null;
+//    }
+
 }
 
 dependencies {
