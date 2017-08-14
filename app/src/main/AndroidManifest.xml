@@ -54,9 +54,9 @@
         <activity
             android:name=".CounterActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".WebActivity"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".WebActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".QrCodeActivity"
             android:screenOrientation="portrait" />
