@@ -90,7 +90,6 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
 
 
         userId = PrefUtils.getString("userId", MyApplication.userId, MyApplication.PREF_USER);
-        LogUtils.e(userId);
         if (!userId.equals("0")) {
             MethodUtil.kq_loadingDialog(CouponsPayActivity.this);
             map = new HashMap<String, String>();
