@@ -84,28 +84,11 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/ll"
+    <Button
+        android:id="@+id/submit"
+        style="@style/all_btn_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_26_dip"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_shuaka"
-            style="@style/button_pay_style"
-            android:drawableTop="@drawable/unionpay" />
-
-        <Button
-            android:id="@+id/btn_wx"
-            style="@style/button_pay_style"
-            android:drawableTop="@drawable/wxpay" />
-
-        <Button
-            android:id="@+id/btn_al"
-            style="@style/button_pay_style"
-            android:drawableTop="@drawable/alipay" />
-
-    </LinearLayout>
+        android:text="@string/submit_order" />
 </RelativeLayout>

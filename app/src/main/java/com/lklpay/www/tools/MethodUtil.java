@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lkl.cloudpos.aidl.system.AidlMerListener;
+import com.lkl.cloudpos.aidl.system.AidlSystem;
 import com.lklpay.www.application.MyApplication;
 import com.lklpay.www.base.BaseActivity;
 
@@ -316,6 +319,92 @@ public class MethodUtil {
         if (token != null) {
             im.hideSoftInputFromWindow(token,
                     InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    /**
+     * 读取终端序列号
+     */
+    public static String getTerminalSn(AidlSystem systemInf) {
+        if(systemInf!=null){
+            try {
+                String terminalSn = systemInf.getSerialNo();
+                return terminalSn;
+            } catch (RemoteException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
+        }else{
+            return null;
+        }
+    }
+
+
+    /**
+     * 读取终端IMSI
+     */
+    public static String getIMSI(AidlSystem systemInf) {
+        if(systemInf!=null){
+            try {
+            String imsi = systemInf.getIMSI();
+            return imsi;
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+        }else{
+            return null;
+        }
+    }
+
+    /**
+     * 读取终端IMEI号
+     */
+    public static String getIMEI(AidlSystem systemInf) {
+        if(systemInf!=null){ try {
+            String imsi = systemInf.getIMEI();
+            return imsi;
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }}else{
+            return null;
+        }
+    }
+
+    /**
+     * 读取操作系统版本信息
+     */
+    public static String getAndroidOsVersion(AidlSystem systemInf) {
+        if(systemInf!=null){ try {
+            String androidOsVersion = systemInf.getAndroidOsVersion();
+            return androidOsVersion;
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }}else{
+            return null;
+        }
+    }
+
+    /**
+     * 获取拉卡拉对安卓系统的定制规范版本
+     *
+     */
+    public static String getLKLOSSpecsVersion(AidlSystem systemInf) {
+        if(systemInf!=null){ try {
+            String androidOsVersion = systemInf.getLKLOSSpecsVersion();
+            return androidOsVersion;
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }}else{
+            return null;
         }
     }
 

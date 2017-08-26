@@ -22,6 +22,8 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <!-- 非系统拨号器里输入电话号码 -->
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 访问系统设备权限 -->
+    <uses-permission android:name="android.permission.CLOUDPOS_MID_SYSTEMDEV" />
 
     <application
         android:name=".application.MyApplication"

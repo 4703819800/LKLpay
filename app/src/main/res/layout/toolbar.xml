@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:singleLine="true"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/dimen_14_sp" />
+            android:textSize="@dimen/dimen_18_sp" />
 
         <TextView
             android:id="@+id/toolbar_tv_right"
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:layout_marginRight="@dimen/dimen_6_dip"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/dimen_10_sp"/>
+            android:textSize="@dimen/dimen_16_sp"/>
     </android.support.v7.widget.Toolbar>
 
 </LinearLayout>

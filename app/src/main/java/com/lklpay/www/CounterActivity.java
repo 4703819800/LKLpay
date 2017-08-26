@@ -72,12 +72,8 @@ public class CounterActivity extends BaseActivityBar {
     Button empty;
     @BindView(R.id.equal)
     Button equal;
-    @BindView(R.id.btn_shuaka)
-    Button btnShuaka;
-    @BindView(R.id.btn_wx)
-    Button btnWx;
-    @BindView(R.id.btn_al)
-    Button btnAl;
+    @BindView(R.id.submit)
+    Button submit;
     @BindView(R.id.iv_image)
     ImageView ivImage;
     @BindView(R.id.tv_name)
@@ -113,7 +109,7 @@ public class CounterActivity extends BaseActivityBar {
 
     }
 
-    @OnClick({R.id.one, R.id.two, R.id.three, R.id.four, R.id.five, R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero, R.id.dot, R.id.empty, R.id.delete, R.id.minus, R.id.plus, R.id.equal, R.id.btn_shuaka, R.id.btn_wx, R.id.btn_al, R.id.toolbar_tv_right})
+    @OnClick({R.id.one, R.id.two, R.id.three, R.id.four, R.id.five, R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero, R.id.dot, R.id.empty, R.id.delete, R.id.minus, R.id.plus, R.id.equal, R.id.submit, R.id.toolbar_tv_right})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.one:
@@ -188,39 +184,21 @@ public class CounterActivity extends BaseActivityBar {
                     MethodUtil.showToast(MethodUtil.getContext().getResources().getString(R.string.vip_shop_ok));
                 }
                 break;
-            case R.id.btn_shuaka:
+
+            case R.id.submit:
                 if (money.length() > 0) {
+
                     intent = new Intent(CounterActivity.this, CouponsPayActivity.class);
                     bundle.putString("money", money);
-                    bundle.putString("type", "1");
+                    bundle.putString("type", "type");
                     intent.putExtras(bundle);
                     MethodUtil.startActivityForResult(intent, MyApplication.GOPAY);
                 } else {
                     MethodUtil.showToast(MethodUtil.getContext().getResources().getString(R.string.pay_money_no));
                 }
+
                 break;
-            case R.id.btn_wx:
-                if (money.length() > 0) {
-                    intent = new Intent(CounterActivity.this, CouponsPayActivity.class);
-                    bundle.putString("money", money);
-                    bundle.putString("type", "2");
-                    intent.putExtras(bundle);
-                    MethodUtil.startActivityForResult(intent, MyApplication.GOPAY);
-                } else {
-                    MethodUtil.showToast(MethodUtil.getContext().getResources().getString(R.string.pay_money_no));
-                }
-                break;
-            case R.id.btn_al:
-                if (money.length() > 0 && Double.parseDouble(money) > 0) {
-                    intent = new Intent(CounterActivity.this, CouponsPayActivity.class);
-                    bundle.putString("money", money);
-                    bundle.putString("type", "3");
-                    intent.putExtras(bundle);
-                    MethodUtil.startActivityForResult(intent, MyApplication.GOPAY);
-                } else {
-                    MethodUtil.showToast(MethodUtil.getContext().getResources().getString(R.string.pay_money_no));
-                }
-                break;
+
         }
     }
 

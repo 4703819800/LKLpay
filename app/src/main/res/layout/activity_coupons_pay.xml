@@ -82,13 +82,24 @@
             android:layout_marginTop="@dimen/dimen_6_dip" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
-
-    <Button
-        android:id="@+id/submit"
-        style="@style/all_btn_style"
+    <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/dimen_26_dip"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/submit_order" />
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_shuaka"
+            style="@style/button_pay_style"
+            android:drawableTop="@drawable/unionpay" />
+
+        <Button
+            android:id="@+id/btn_wx"
+            style="@style/button_pay_style"
+            android:drawableTop="@drawable/wxpay" />
+
+    </LinearLayout>
 
 </RelativeLayout>
