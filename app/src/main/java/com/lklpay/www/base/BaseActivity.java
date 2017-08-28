@@ -139,16 +139,17 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 设别服务连接桥
      */
 
-    private ServiceConnection conn = new ServiceConnection(){
+    private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder serviceBinder) {
             LogUtils.d("行业SDK服务连接成功");
-            if(serviceBinder != null){
+            if (serviceBinder != null) {
                 //获取设备服务实例
                 AidlDeviceService serviceManager = AidlDeviceService.Stub.asInterface(serviceBinder);
                 try {
                     systemInf = AidlSystem.Stub.asInterface(serviceManager
                             .getSystemService());
+                    getMerNum();
                 } catch (RemoteException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -157,6 +158,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             }
         }
+
         @Override
         public void onServiceDisconnected(ComponentName name) {
             LogUtils.d("行业SDK服务断开了");
@@ -193,16 +195,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 绑定服务
      */
-    public void bindService(){
-        try{
+    public void bindService() {
+        try {
             Intent intent = new Intent();
             intent.setAction(LKL_SERVICE_ACTION);
             Intent eintent = new Intent(getExplicitIntent(this, intent));
             boolean flag = false;
             flag = bindService(eintent, conn, Context.BIND_AUTO_CREATE);
-            if(flag){
+            if (flag) {
                 LogUtils.d("服务绑定成功");
-            }else{
+            } else {
                 LogUtils.d("服务绑定失败");
             }
         } catch (Exception e) {
@@ -212,6 +214,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 获取启动服务的Intent
+     *
      * @param context
      * @param implicitIntent
      * @return
@@ -226,7 +229,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         //获取组件信息，创建组件名
         ResolveInfo serviceInfo = resolveInfos.get(0);
-        Log.d("PackageName",resolveInfos.size() + "");
+        Log.d("PackageName", resolveInfos.size() + "");
         String packageName = serviceInfo.serviceInfo.packageName;
         String className = serviceInfo.serviceInfo.name;
         ComponentName component = new ComponentName(packageName, className);
@@ -239,6 +242,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         activity = this;
+        /**
+         *真实发布时打开
+         * 手机测试时不打开否则运行报错
+         */
         bindService();
     }
 
@@ -251,6 +258,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        /**
+         *真实发布时打开
+         * 手机测试时不打开否则运行报错
+         */
         this.unbindService(conn);
         //        ImmersionBar.with(this).destroy();//销毁bar
     }

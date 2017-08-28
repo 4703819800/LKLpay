@@ -8,7 +8,7 @@
     <string name="vip_shop">会员到店</string>
     <string name="zdyc_tcyy">再点一次退出应用</string>
     <string name="submit">提交</string>
-    <string name="submit_order">提交订单</string>
+    <string name="submit_order">去支付</string>
     <string name="message_unusual">服务器异常，请稍后重试</string>
 
     <string name="shoukuan">收  款</string>
@@ -25,6 +25,8 @@
     <string name="money_coupons">优惠金额:</string>
     <string name="pay_money_out">确定退出收款？</string>
     <string name="vip_shop_ok">会员已经登录</string>
+    <string name="order_state_fail">订单状态更改失败请重试！</string>
+    <string name="order_state_success">订单支付成功！</string>
 
     <string name="load_no_more">没有更多了</string>
     <string name="refres_more">下拉刷新</string>

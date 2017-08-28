@@ -31,6 +31,9 @@ import com.lklpay.www.tools.PrefUtils;
 import com.lklpay.www.tools.UiUtils;
 import com.lklpay.www.tools.Xutils;
 
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +69,7 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
     private String payType = "0";
     private String proc_cd;
 
+    private Callback.Cancelable cancelable;
     private orderPayBean orderPayBean;
     private couponsBean couponsbean;
     private CouponsManageAdapter couponsManageAdapter;
@@ -217,6 +221,7 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
      * 680000 扫码撤销
      * 700000 扫码补单
      * 900000 结算
+     *
      * @param view
      */
     @OnClick({R.id.btn_shuaka, R.id.btn_wx})
@@ -239,7 +244,7 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
     /**
      * 提交订单到服务器
      */
-    private void order(){
+    private void order() {
         userId = PrefUtils.getString("userId", MyApplication.userId, MyApplication.PREF_USER);
         MethodUtil.kq_loadingDialog(CouponsPayActivity.this);
         Map<String, String> mapOrder = new HashMap<String, String>();
@@ -253,47 +258,49 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
                 LogUtils.e(result);
                 MethodUtil.gb_loadingDialog();
                 orderPayBean = gson.fromJson(result, orderPayBean.class);
-                if(orderPayBean.isStatus()){
+                if (orderPayBean.isStatus()) {
                     MethodUtil.showToast(orderPayBean.getTicketMessage());
                     lkl_order();
-
+//                    setOrdetState(orderPayBean.getOrderNum());
                 }
 
             }
         });
     }
+
     /**
      * 收单接口
      */
-private void lkl_order(){
-    try {
-        Intent intent = setComponent();
-        Bundle bundle = new Bundle();
-        bundle.putString("msg_tp", "0200");
-        bundle.putString("pay_tp", payType);
-        bundle.putString("proc_tp", "00");
-        //bundle.putString("return_type", returntype);
-        //bundle.putString("adddataword", adddataword);
+    private void lkl_order() {
+        try {
+            Intent intent = setComponent();
+            Bundle bundle = new Bundle();
+            bundle.putString("msg_tp", "0200");
+            bundle.putString("pay_tp", payType);
+            bundle.putString("proc_tp", "00");
+            //bundle.putString("return_type", returntype);
+            //bundle.putString("adddataword", adddataword);
 
-        bundle.putString("proc_cd", proc_cd);
-        bundle.putString("amt", money);
-        //bundle.putString("order_no", billNo);
-        //bundle.putString("print_info", printinfo);
-        bundle.putString("appid","com.lklpay.www");
-        bundle.putString("time_stamp",
-                DateTimeUtil.getCurrentDate("yyyyMMddhhmmss"));
-        intent.putExtras(bundle);
-        LogUtils.d("========jsonArray======"+bundle.getString("reserve"));
-        startActivityForResult(intent, 1);
-    } catch (ActivityNotFoundException e) {
-        LogUtils.e(e.toString());
-    } catch (Exception e) {
-        LogUtils.e(e.toString());
+            bundle.putString("proc_cd", proc_cd);
+            bundle.putString("amt", money);
+            bundle.putString("order_no", orderPayBean.getOrderNum());
+            //bundle.putString("print_info", printinfo);
+            bundle.putString("appid", "com.lklpay.www");
+            bundle.putString("time_stamp",
+                    DateTimeUtil.getCurrentDate("yyyyMMddhhmmss"));
+            intent.putExtras(bundle);
+            LogUtils.d("========jsonArray======" + bundle.getString("reserve"));
+            startActivityForResult(intent, 1);
+        } catch (ActivityNotFoundException e) {
+            LogUtils.e(e.toString());
+        } catch (Exception e) {
+            LogUtils.e(e.toString());
+        }
     }
-}
 
     /**
      * 收单接口回调结果
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -322,8 +329,8 @@ private void lkl_order(){
             // 支付成功
             case Activity.RESULT_OK:
 
-                setResult(MyApplication.PAY_SUCCESS);
-                closeCurrent();
+                setOrdetState(order_no);
+
                 break;
             // 支付取消
             case Activity.RESULT_CANCELED:
@@ -344,15 +351,95 @@ private void lkl_order(){
     }
 
     /**
+     * 更改服务器订单状态
+     *
+     * @param orderNum
+     */
+    private void setOrdetState(final String orderNum) {
+        MethodUtil.kq_loadingDialog(CouponsPayActivity.this);
+        Map<String, String> mapOrderState = new HashMap<String, String>();
+        mapOrderState.put("orderNum", orderNum);
+        cancelable = Xutils.getInstance().post(MethodUtil.getContext().getResources().getString(R.string.gen) + "changePayStatus", mapOrderState, new Xutils.XCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtils.e(result);
+                MethodUtil.gb_loadingDialog();
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    if (jsonObject.getBoolean("status")) {
+                        MethodUtil.showToast(MethodUtil.getContext().getResources().getString(R.string.order_state_success));
+                        setResult(MyApplication.PAY_SUCCESS);
+                        closeCurrent();
+                    } else {
+                        showMaterialDialogDefault(orderNum);
+                    }
+                } catch (Exception e) {
+                    showMaterialDialogDefault(orderNum);
+                }
+
+
+            }
+        });
+    }
+
+    /**
+     * 显示对话框
+     */
+    public void showMaterialDialogDefault(final String orderNum) {
+        dialog = UiUtils.MaterialDialogDefault(CouponsPayActivity.this, MethodUtil.getContext().getResources().getString(R.string.order_state_fail));
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {//left btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {//right btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        setOrdetState(orderNum);
+                    }
+                }
+        );
+    }
+
+    /**
      * 设置跳转接口
      */
-    public Intent setComponent(){
+    public Intent setComponent() {
         ComponentName component = new ComponentName(
                 "com.lkl.cloudpos.payment",
                 "com.lkl.cloudpos.payment.activity.MainMenuActivity");
         Intent intent = new Intent();
         intent.setComponent(component);
         return intent;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LogUtils.e("onPause");
+
+        if (cancelable != null)
+            cancelable.cancel();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LogUtils.e("onStop");
+
+        if (cancelable != null)
+            cancelable.cancel();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogUtils.e("onDestroy");
+
+        if (cancelable != null)
+            cancelable.cancel();
     }
 
 }
