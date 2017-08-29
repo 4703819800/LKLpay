@@ -261,7 +261,7 @@ public class CouponsPayActivity extends BaseActivityBar implements BaseQuickAdap
                 if (orderPayBean.isStatus()) {
                     MethodUtil.showToast(orderPayBean.getTicketMessage());
                     lkl_order();
-//                    setOrdetState(orderPayBean.getOrderNum());
+//                    setOrdetState(orderPayBean.getOrderNum());//测试
                 }
 
             }
