@@ -348,7 +348,7 @@ public class Xutils {
      * @param maps
      * @param callBack
      */
-    public Callback.Cancelable downLoadFile(String url, Map<String, String> maps, final XDownLoadCallBack callBack) {
+    public Callback.Cancelable downLoadFile(String url, Map<String, String> maps,String apkName, final XDownLoadCallBack callBack) {
 
         RequestParams params = new RequestParams(url);
         if (maps != null && !maps.isEmpty()) {
@@ -356,8 +356,11 @@ public class Xutils {
                 params.addBodyParameter(entry.getKey(), entry.getValue());
             }
         }
-        params.setAutoRename(true);// 断点续传
-        params.setSaveFilePath("待定地址");
+        //自动为文件命名
+        params.setAutoRename(true);
+        // 是否使用断点下载
+        params.setAutoResume(true);
+        params.setSaveFilePath(FileUtils.getDirGen() + "/" + apkName);
         Callback.Cancelable cancelable = x.http().post(params, new Callback.ProgressCallback<File>() {
             @Override
             public void onSuccess(final File result) {

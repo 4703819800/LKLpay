@@ -26,6 +26,13 @@ public class MyApplication extends Application {
     public static final int PAY_SUCCESS = 10010;
     public static final int GOPAY = 10011;
 
+    public static final String versionXmlPath = "getVersion";
+    public static final String GENGXIN_TYPE_MAIN = "main";
+    public static final String GENGXIN_TYPE_UPDATE = "update";
+
+    public static final String packageName = "com.lklpay.www";
+    public static final String apkName = "lklpay_";
+
     public static int mainThreadId = 0;
     public static final String ROOT = "lklpay";
 

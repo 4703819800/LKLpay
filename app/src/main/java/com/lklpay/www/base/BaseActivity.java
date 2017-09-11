@@ -31,6 +31,7 @@ import com.lklpay.www.tools.MethodUtil;
 import com.lklpay.www.tools.PrefUtils;
 import com.lklpay.www.tools.UiUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -125,6 +126,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void closeCurrent() {
         AppManager.getInstance().removeCurrent();
+    }
+
+    /**
+     * 关闭所有activity
+     */
+    public static void closeCurrentAll() {
+        AppManager.getInstance().removeAll();
     }
 
     @Override
@@ -258,6 +266,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AppManager.getInstance().removeActivity(this);
         /**
          *真实发布时打开
          * 手机测试时不打开否则运行报错

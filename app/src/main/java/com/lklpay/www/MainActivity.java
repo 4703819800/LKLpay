@@ -10,6 +10,7 @@ import com.lklpay.www.application.MyApplication;
 import com.lklpay.www.base.BaseActivity;
 import com.lklpay.www.tools.MethodUtil;
 import com.lklpay.www.tools.PrefUtils;
+import com.lklpay.www.updateutil.UpdateManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,6 +54,12 @@ public class MainActivity extends BaseActivity {
         } else {
             tvLogin.setText(MethodUtil.getContext().getResources().getString(R.string.action_sign_in));
         }
+
+        /**
+         * 检查更新
+         */
+        new UpdateManager(MainActivity.this,
+                MyApplication.GENGXIN_TYPE_MAIN).checkUpdate();
 
     }
 
