@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.lklpay.www.R;
 import com.lklpay.www.base.BaseActivity;
 import com.lklpay.www.tools.FileUtils;
+import com.lklpay.www.tools.LogUtils;
 import com.lklpay.www.tools.Xutils;
 
 import org.xutils.common.Callback;
@@ -41,6 +42,8 @@ public class DownloadAndInstall {
     private TextView textView;
     private int progress;
     private Callback.Cancelable cancelable;
+
+    private boolean finished = true;
 
 
     public DownloadAndInstall(Context context, String apkPath, String apkName, int mandatoryUpdate) {
@@ -71,9 +74,10 @@ public class DownloadAndInstall {
             public void onClick(DialogInterface dialog, int which) {
 
                 dialog.dismiss();
-                cancelable.cancel();
-                if (MandatoryUpdate == 0)
+                if (MandatoryUpdate == 0) {
+                    cancelable.cancel();
                     BaseActivity.closeCurrentAll();
+                }
             }
         });
         builder.create().show();
@@ -88,6 +92,7 @@ public class DownloadAndInstall {
             public void onResponse(File result) {
                 //apk下载完成后，调用系统的安装方法
                 installApk();
+                finished = false;
             }
 
             @Override
@@ -99,12 +104,14 @@ public class DownloadAndInstall {
 
             @Override
             public void onFinished() {
-
+                LogUtils.e("onFinished");
+                if (finished)
+                    downloadApk();
             }
 
             @Override
             public void onSuccess(String result) {
-
+                LogUtils.e("onSuccess" + result);
             }
         });
 
