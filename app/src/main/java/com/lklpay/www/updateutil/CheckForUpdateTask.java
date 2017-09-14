@@ -25,6 +25,7 @@ import com.lklpay.www.CounterActivity;
 import com.lklpay.www.R;
 import com.lklpay.www.application.MyApplication;
 import com.lklpay.www.base.BaseActivity;
+import com.lklpay.www.tools.LogUtils;
 import com.lklpay.www.tools.MethodUtil;
 import com.lklpay.www.tools.PrefUtils;
 import com.lklpay.www.tools.UiUtils;
@@ -51,7 +52,7 @@ public class CheckForUpdateTask extends AsyncTask<String, Integer, InputStream> 
     private Context mContext;
     private String mType;
     private boolean needUpdate;
-    private int MandatoryUpdate = 0;// 强制更新 ：0，不强制更新：1
+    private int MandatoryUpdate = 1;// 强制更新 ：0，不强制更新：1
 
     private int serviceName;
     private int versionCode;
@@ -64,14 +65,14 @@ public class CheckForUpdateTask extends AsyncTask<String, Integer, InputStream> 
 
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
-
+            LogUtils.e(msg+"");
             JSONObject jo = (JSONObject) msg.obj;
             try {
                 JSONObject version = jo.getJSONObject("version");
                 serviceName = version.getInt("version");
                 apkPath = version.getString("path");
                 updateInfo = version.getString("updateInfo");
-                MandatoryUpdate = version.getInt("isUpdate");
+//                MandatoryUpdate = version.getInt("isUpdate");
                 apkName = MyApplication.apkName + serviceName + ".apk";
                 if (serviceName > versionCode) {
                     showNoticeDialog();
@@ -111,7 +112,7 @@ public class CheckForUpdateTask extends AsyncTask<String, Integer, InputStream> 
         }
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("platform", "android");
+//        map.put("platform", "android");
         versionXmlPath = MethodUtil.getContext().getResources().getString(R.string.gen)
                 + MyApplication.versionXmlPath;
 
@@ -129,7 +130,6 @@ public class CheckForUpdateTask extends AsyncTask<String, Integer, InputStream> 
 
             }
         });
-
         return null;
     }
 

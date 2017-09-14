@@ -44,6 +44,7 @@ public class DownloadAndInstall {
     private Callback.Cancelable cancelable;
 
     private boolean finished = true;
+    private int finished_num = 0;
 
 
     public DownloadAndInstall(Context context, String apkPath, String apkName, int mandatoryUpdate) {
@@ -74,8 +75,8 @@ public class DownloadAndInstall {
             public void onClick(DialogInterface dialog, int which) {
 
                 dialog.dismiss();
+                cancelable.cancel();
                 if (MandatoryUpdate == 0) {
-                    cancelable.cancel();
                     BaseActivity.closeCurrentAll();
                 }
             }
@@ -93,6 +94,7 @@ public class DownloadAndInstall {
                 //apk下载完成后，调用系统的安装方法
                 installApk();
                 finished = false;
+                finished_num = 0;
             }
 
             @Override
@@ -105,8 +107,10 @@ public class DownloadAndInstall {
             @Override
             public void onFinished() {
                 LogUtils.e("onFinished");
-                if (finished)
+                if (finished&&finished_num<20) {
                     downloadApk();
+                    finished_num++;
+                }
             }
 
             @Override
@@ -114,8 +118,6 @@ public class DownloadAndInstall {
                 LogUtils.e("onSuccess" + result);
             }
         });
-
-
     }
 
     public void installApk() {
